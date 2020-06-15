@@ -1,4 +1,5 @@
 const dotenv = require('dotenv').config()
+const config = require('./config/config')
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
@@ -31,7 +32,8 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use('/products', productRoutes)
+productRoutes(app)
+// app.use('/products', productRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/user', userRoutes)
 
